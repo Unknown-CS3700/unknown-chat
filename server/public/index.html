@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unknown Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Unknown Chat</h1>
+      <span id="status" class="status status-disconnected">disconnected</span>
+    </header>
+
+    <!-- Entry page -->
+    <section id="entry-view">
+      <form id="join-form" class="card entry">
+        <h2>Join a chat</h2>
+        <p class="muted">Pick a name. No account needed.</p>
+
+        <label>
+          Display name
+          <input id="username" maxlength="20" placeholder="2-20 characters" autocomplete="off" autofocus />
+        </label>
+
+        <label>
+          Room
+          <select id="room"></select>
+        </label>
+
+        <p id="join-error" class="error"></p>
+        <button id="join-btn" type="submit" disabled>Join</button>
+      </form>
+    </section>
+
+    <!-- Chat view (hidden until you join) -->
+    <section id="chat-view" class="card chat" hidden>
+      <div class="chat-header">
+        <h2 id="room-title"></h2>
+        <button id="leave-btn" class="secondary" type="button">Leave</button>
+      </div>
+
+      <ul id="messages" class="messages"></ul>
+
+      <p id="send-error" class="error"></p>
+      <form id="send-form" class="composer">
+        <input id="message-input" maxlength="500" placeholder="Type a message..." autocomplete="off" />
+        <button id="send-btn" type="submit">Send</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Socket.IO client library (the server provides this file automatically) -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
