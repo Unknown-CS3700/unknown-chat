@@ -3,9 +3,11 @@
 Real-time chat app for CS3700-002 (Node.js + Express + Socket.IO).
 
 ## Running locally
+```
 cd server
 npm install
 npm run dev
+```
 
 Then open http://localhost:3000
 
