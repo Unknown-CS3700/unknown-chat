@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unknown Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Unknown Chat</h1>
+      <div class="header-right">
+        <span id="status" class="status status-offline">offline</span>
+        <span id="me" class="muted" hidden></span>
+        <button id="drop-btn" class="secondary small" type="button" hidden
+                title="Close the connection to test reconnecting">Drop connection</button>
+        <button id="signout-btn" class="secondary small" type="button" hidden>Sign out</button>
+      </div>
+    </header>
+
+    <!-- Sign in / sign up -->
+    <section id="auth-view">
+      <form id="auth-form" class="card auth">
+        <div class="tabs">
+          <button type="button" class="tab active" data-mode="signin">Sign in</button>
+          <button type="button" class="tab" data-mode="signup">Sign up</button>
+        </div>
+
+        <label>
+          Email
+          <input id="email" type="email" autocomplete="email" required />
+        </label>
+
+        <label id="name-field" hidden>
+          Display name
+          <input id="display-name" maxlength="30" autocomplete="nickname" />
+        </label>
+
+        <label>
+          Password
+          <input id="password" type="password" minlength="8" autocomplete="current-password" required />
+        </label>
+
+        <p id="auth-error" class="error"></p>
+        <button id="auth-btn" type="submit">Sign in</button>
+        <p class="muted hint">Demo: alice@test.com / password123</p>
+      </form>
+    </section>
+
+    <!-- Chat -->
+    <section id="chat-view" class="chat" hidden>
+      <aside class="card sidebar">
+        <h3>My rooms</h3>
+        <ul id="my-rooms" class="room-list"></ul>
+
+        <h3>Browse rooms</h3>
+        <ul id="other-rooms" class="room-list"></ul>
+
+        <form id="create-form" class="create">
+          <input id="room-name" maxlength="30" placeholder="New room name" autocomplete="off" />
+          <button type="submit" class="small">Create</button>
+        </form>
+        <p id="room-error" class="error"></p>
+      </aside>
+
+      <main class="card messages-panel">
+        <div class="chat-header">
+          <h2 id="room-title">Pick a room</h2>
+          <button id="leave-btn" class="secondary small" type="button" hidden>Leave</button>
+        </div>
+
+        <ul id="messages" class="messages"></ul>
+
+        <p id="send-error" class="error"></p>
+        <form id="send-form" class="composer">
+          <input id="message-input" maxlength="2000" placeholder="Type a message..." autocomplete="off" disabled />
+          <button id="send-btn" type="submit" disabled>Send</button>
+        </form>
+      </main>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
